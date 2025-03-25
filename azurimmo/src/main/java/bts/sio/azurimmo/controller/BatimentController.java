@@ -1,6 +1,7 @@
 package bts.sio.azurimmo.controller;
 
 import bts.sio.azurimmo.model.Batiment;
+
 import bts.sio.azurimmo.repository.BatimentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +33,6 @@ public class BatimentController {
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
-    
    
     
     @PostMapping("/")
@@ -44,5 +44,19 @@ public class BatimentController {
         Batiment savedBatiment = batimentRepository.save(batiment);
         return ResponseEntity.ok(savedBatiment);
     }
+    
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteBatiment(@PathVariable Long id){
+    	if (batimentRepository.existsById(id)) {
+    		batimentRepository.deleteById(id);
+    		return ResponseEntity.noContent().build();
+		
+			
+    	} else {
+    		return ResponseEntity.notFound().build();
+    	}
+    }
+    
 
 }
