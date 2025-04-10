@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppartementService {
@@ -18,6 +19,21 @@ public class AppartementService {
         return appartementRepository.findAll();
     }
 
+    // Récupérer un appartement par son ID
+    public Optional<Appartement> findById(Long id) {
+        return appartementRepository.findById(id);
+    }
+
+    // Vérifier si un appartement existe
+    public boolean existsById(Long id) {
+        return appartementRepository.existsById(id);
+    }
+
+    // Supprimer un appartement par son ID
+    public void deleteById(Long id) {
+        appartementRepository.deleteById(id);
+    }
+
     // Récupérer les appartements par ville
     public List<Appartement> findByVille(String ville) {
         return appartementRepository.findByBatiment_Ville(ville);
@@ -28,7 +44,7 @@ public class AppartementService {
         return appartementRepository.findByBatiment_Id(batimentId);
     }
 
-    // Sauvegarder un nouvel appartement
+    // Sauvegarder un nouvel appartement ou mettre à jour un existant
     public Appartement saveAppartement(Appartement appartement) {
         return appartementRepository.save(appartement);
     }
