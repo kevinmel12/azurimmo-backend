@@ -1,6 +1,8 @@
 package bts.sio.azurimmo.model;
 
 import java.sql.Date;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -90,18 +92,12 @@ public class Contrat {
     	this.statut = statut;
     }
 
-    //Relation ManyToOne avec la classe Appartement
-    @ManyToOne
+ // Relations ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "appartement_id")
-    private Appartement appartement;    
+    private Appartement appartement;
 
-    //Relation ManyToOne avec la classe Garant
-    @ManyToOne
-    @JoinColumn(name = "garant_id")
-    private Garant garant;
-    
-    //Relation ManyToOne avec la classe Locataire
-    @ManyToOne
-    @JoinColumn(name = "locataire")
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "locataire_id")
     private Locataire locataire;
 }
