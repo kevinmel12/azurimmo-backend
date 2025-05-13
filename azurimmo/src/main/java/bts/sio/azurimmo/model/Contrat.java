@@ -91,6 +91,23 @@ public class Contrat {
     public void setStatut(String statut) {
     	this.statut = statut;
     }
+ // Getter et Setter pour appartement
+    public Appartement getAppartement() {
+        return appartement;
+    }
+
+    public void setAppartement(Appartement appartement) {
+        this.appartement = appartement;
+    }
+
+    // Getter et Setter pour locataire
+    public Locataire getLocataire() {
+        return locataire;
+    }
+
+    public void setLocataire(Locataire locataire) {
+        this.locataire = locataire;
+    }
 
  // Relations ManyToOne
     @ManyToOne(cascade = CascadeType.MERGE)
