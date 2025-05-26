@@ -1,4 +1,3 @@
-// File: azurimmo/src/main/java/bts/sio/azurimmo/controller/LocataireController.java
 package bts.sio.azurimmo.controller;
 
 import java.util.List;

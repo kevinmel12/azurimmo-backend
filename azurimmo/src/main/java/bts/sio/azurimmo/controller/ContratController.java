@@ -23,6 +23,12 @@ public class ContratController {
         return contratRepository.findAll();
     }
     
+    // Récupérer les contrats par ID d'appartement  
+    @GetMapping("/appartement/{appartementId}")
+    public List<Contrat> getContratsByAppartementId(@PathVariable int appartementId) {
+        return contratRepository.findByAppartement_Id(appartementId);
+    }
+    
     // Récupérer un contrat par ID
     @GetMapping("/{id}") 
     public ResponseEntity<Contrat> getContratById(@PathVariable Long id) {
