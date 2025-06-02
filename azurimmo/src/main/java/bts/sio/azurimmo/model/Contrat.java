@@ -91,7 +91,7 @@ public class Contrat {
     public void setStatut(String statut) {
     	this.statut = statut;
     }
- // Getter et Setter pour appartement
+    // Getter et Setter pour appartement
     public Appartement getAppartement() {
         return appartement;
     }
@@ -109,7 +109,7 @@ public class Contrat {
         this.locataire = locataire;
     }
 
- // Relations ManyToOne
+    // Relations ManyToOne
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "appartement_id")
     private Appartement appartement;
@@ -117,4 +117,17 @@ public class Contrat {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "locataire_id")
     private Locataire locataire;
+    
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "associe_id") 
+    private Associe associe;
+
+    // Getter et Setter pour associe
+    public Associe getAssocie() {
+        return associe;
+    }
+
+    public void setAssocie(Associe associe) {
+        this.associe = associe;
+    }
 }
